@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Search History</title>
+</head>
+
+<body>
+
+<h1>Your Search History</h1>
+
+{% if searches %}
+
+    <ul>
+    {% for item in searches %}
+        <li>
+            {{ item.product_name }} - {{ item.timestamp }}
+        </li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <p>No search history found.</p>
+{% endif %}
+
+</body>
+</html>
