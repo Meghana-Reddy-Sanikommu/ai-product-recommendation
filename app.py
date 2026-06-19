@@ -1,3 +1,6 @@
+import os
+
+os.makedirs("dataset", exist_ok=True)
 from flask import Flask, render_template, request, redirect, session
 from models import db, User, SearchHistory
 import pandas as pd
@@ -212,4 +215,5 @@ def add_product():
 
     return render_template("add_product.html")
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 7860))
+    app.run(host="0.0.0.0", port=port, debug=False)
