@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Product Recommendation System</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            margin-top:50px;
+            background:#f4f4f4;
+        }
+
+        h1{
+            color:#333;
+        }
+
+        input{
+            padding:10px;
+            width:300px;
+            font-size:16px;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        a{
+            text-decoration:none;
+            margin:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<hr>
+
+<a href="/">Home</a> |
+<a href="/products">Products</a> |
+<a href="/history">History</a>
+
+{% if user_name %}
+    | <a href="/logout">Logout</a>
+{% else %}
+    | <a href="/login">Login</a>
+    | <a href="/signup">Signup</a>
+{% endif %}
+
+<hr>
+
+{% if user_name %}
+    <p>Logged in as {{ user_name }}</p>
+{% else %}
+    <p>You are not logged in</p>
+{% endif %}
+
+<h1>AI Product Recommendation System</h1>
+
+<form action="/search" method="POST">
+
+    <input
+        type="text"
+        name="product_name"
+        placeholder="Search Product">
+
+    <br><br>
+
+    <button type="submit">
+        Search
+    </button>
+
+    <br><br>
+
+    <a href="/history">View My Search History</a>
+
+</form>
+
+</body>
+</html>

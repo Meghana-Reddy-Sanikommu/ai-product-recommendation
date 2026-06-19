@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            padding:20px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .card{
+            background:white;
+            padding:15px;
+            margin:15px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>Recommended Products</h1>
+
+<h2>Best Match</h2>
+
+{% for product in best_match %}
+<div class="card">
+    {% if product.Image and product.Image == product.Image %}
+<img src="{{ url_for('static', filename='images/' + product.Image|string) }}" width="200">
+{% endif %}
+    <h3>{{ product.Product_Name }}</h3>
+    <p>Image = {{ product.Image }}</p>
+
+    <p><b>Brand:</b> {{ product.Brand }}</p>
+
+    <p><b>Price:</b> ₹{{ product.Price }}</p>
+
+    <p><b>Rating:</b> ⭐ {{ product.Rating }}</p>
+    <p><b>Similarity:</b> {{ "%.2f"|format(product.Similarity) }}</p>
+
+</div>
+{% endfor %}
+
+<h2>Better Options</h2>
+
+{% for product in better_options %}
+<div class="card">
+    {% if product.Image and product.Image == product.Image %}
+<img src="{{ url_for('static', filename='images/' + product.Image|string) }}" width="200">
+{% endif %}
+    <h3>{{ product.Product_Name }}</h3>
+    <p>Image = {{ product.Image }}</p>
+    <p><b>Brand:</b> {{ product.Brand }}</p>
+
+    <p><b>Price:</b> ₹{{ product.Price }}</p>
+
+    <p><b>Rating:</b> ⭐ {{ product.Rating }}</p>
+    <p><b>Similarity:</b> {{ "%.2f"|format(product.Similarity) }}</p>
+
+</div>
+{% endfor %}
+
+<h2>Other Related Products</h2>
+
+{% for product in other_options %}
+<div class="card">
+    {% if product.Image and product.Image == product.Image %}
+<img src="{{ url_for('static', filename='images/' + product.Image|string) }}" width="200">
+{% endif %}
+    <h3>{{ product.Product_Name }}</h3>
+     <p>Image = {{ product.Image }}</p>
+    <p><b>Brand:</b> {{ product.Brand }}</p>
+
+    <p><b>Price:</b> ₹{{ product.Price }}</p>
+
+    <p><b>Rating:</b> ⭐ {{ product.Rating }}</p>
+    <p><b>Similarity:</b> {{ "%.2f"|format(product.Similarity) }}</p>
+
+</div>
+{% endfor %}
+
+</body>
+</html>
